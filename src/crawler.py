@@ -18,11 +18,14 @@ def parse_raw_text(raw_text):
     return cleaned_arabic.strip()
 
 if __name__ == "__main__":
+
+# Put your shamela.ws/book/{NUMBER} link here - without the page number
+    
     BOOK_URL = "https://shamela.ws/book/6387"
     current_page = 1
 
     # Fetch first page of book
-    page_content = get_page_content(f'{BOOK_URL}/{current_page}#p1')
+    page_content = get_page_content(f'{BOOK_URL}/{current_page}')
 
     # Find total page count
     final_page_url = page_content.select("a.btn.btn-3d.btn-white.btn-sm")[-1].get('href')
@@ -55,5 +58,5 @@ if __name__ == "__main__":
             output_file.write(f"Page: {result['Page']}\n")
             output_file.write(f"Content:\n{result['Content']}\n\n---\n")
 
-    print(f'All output has been written to {output_file_path}')
+    print(f'\n All output has been written to {output_file_path}')
 
